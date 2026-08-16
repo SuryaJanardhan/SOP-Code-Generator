@@ -3,34 +3,43 @@
 ## End-to-End Flow
 
 ```text
-Incident / SOP
-      │
-      ▼
-Multi-Agent Orchestration (LangGraph)
-      │
-      ▼
-Retrieve relevant documents and code
-      │
-      ▼
-Vector Search (Qdrant + Embeddings)
-      │
-      ▼
-LLM Reasoning (Qwen / Llama)
-      │
-      ▼
-Generate patch
-      │
-      ▼
-Run tests
-      │
-      ▼
-Evaluate quality (RAGAS / DeepEval)
-      │
-      ▼
-Pass or Retry
-      │
-      ▼
-Human approval
+                    USER
+                      │
+          ┌───────────┴───────────┐
+          │                       │
+       Git URL                 SOP Doc
+          │                       │
+          └───────────┬───────────┘
+                      ↓
+               SUPERVISOR / ROOT
+                      │
+          ┌───────────┴───────────┐
+          ↓                       ↓
+   SOP ANALYSIS AGENT       GIT/REPO AGENT
+          │                       │
+   Understand bug +          Sandbox clone
+   resolution steps          Repo analysis
+          │                   Knowledge Graph
+          │                   README summary
+          └───────────┬───────────┘
+                      ↓
+                 ROOT AGENT
+                      │
+              Understands combined
+              SOP + repo context
+                      ↓
+             Dynamic task planning
+                      ↓
+          ┌───────────┬───────────┐
+          ↓           ↓           ↓
+       READ        WRITE        CMD
+       AGENT       AGENT       AGENT
+          │           │           │
+          └───────────┴───────────┘
+                      ↓
+                CODEBASE CHANGE
+                      ↓
+              Alternate code snippet
 ```
 
 ---
