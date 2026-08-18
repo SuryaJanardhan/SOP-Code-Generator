@@ -16,14 +16,14 @@ Building a full-fledged SOP-to-code generation platform with a frontend dashboar
 
 ```mermaid
 flowchart TD
-    subgraph Frontend Web Dashboard
+    subgraph Frontend ["Frontend Web Dashboard"]
         UI_Input[Incident Intake Form: Repo URL + SOP Upload] --> UI_Dashboard[Incident Management Dashboard]
         UI_Dashboard --> UI_Graph[Live Agent Graph Visualizer]
         UI_Dashboard --> UI_Diff[Monaco Side-by-Side Diff Viewer]
         UI_Dashboard --> UI_Terminal[Live Execution Log Terminal]
     end
 
-    subgraph Backend API & WebSockets Server
+    subgraph Backend ["Backend API & WebSockets Server"]
         UI_Input -->|POST /api/incidents| API_Gateway[FastAPI Server Engine]
         API_Gateway -->|WebSockets /ws/incidents/id| WS_Stream[Real-Time State Streamer]
         WS_Stream -->|Live Agent Logs & Graph State| UI_Graph
@@ -31,10 +31,10 @@ flowchart TD
         API_Gateway --> JobQueue[Background Task Runner]
     end
 
-    subgraph Agentic Pipeline Engine
+    subgraph Pipeline ["Agentic Pipeline Engine"]
         JobQueue --> Supervisor[Supervisor Orchestrator Agent]
         
-        subgraph Intake & Indexing
+        subgraph Intake ["Intake & Indexing"]
             Supervisor --> SOPAgent[SOP Analysis Agent]
             Supervisor --> GitAgent[Git & Repo Sandbox Agent]
             
@@ -46,7 +46,7 @@ flowchart TD
             VectorDB --> State
         end
 
-        subgraph Execution & Verification Loop
+        subgraph Loop ["Execution & Verification Loop"]
             State --> Planner[Dynamic Task Planner]
             Planner --> ReadAgent[Read Agent]
             Planner --> WriteAgent[Write / Patch Agent]

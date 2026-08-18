@@ -22,7 +22,7 @@ To solve the problem statement effectively, four alternative solution approaches
 
 ```mermaid
 flowchart TD
-    subgraph Candidate Solution Approaches
+    subgraph Candidate ["Candidate Solution Approaches"]
         S1[Solution Way 1: Linear Agent Chain]
         S2[Solution Way 2: Single ReAct Tool Agent]
         S3[Solution Way 3: Multi-Agent Supervisor Pattern]
@@ -50,33 +50,33 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-    subgraph Phase 1: Core Parsing & Graph Indexing
+    subgraph Phase1 ["Phase 1: Core Parsing & Graph Indexing"]
         P1_1[Tree-sitter AST Parser] --> P1_2[NetworkX Dependency Graph]
         P1_2 --> P1_3[Vector Store Indexer]
     end
 
-    subgraph Phase 2: Agent Orchestration Engine
+    subgraph Phase2 ["Phase 2: Agent Orchestration Engine"]
         P2_1[Pydantic State Schema] --> P2_2[SOP Analysis Agent]
         P2_2 --> P2_3[Supervisor LangGraph StateMachine]
         P2_3 --> P2_4[Patch & Coder Agent]
         P2_4 --> P2_5[Test & Evaluator Agent]
     end
 
-    subgraph Phase 3: Backend API & Sandbox Runner
+    subgraph Phase3 ["Phase 3: Backend API & Sandbox Runner"]
         P3_1[FastAPI Server Engine] --> P3_2[Background Job Queue]
         P3_2 --> P3_3[WebSocket Log Streamer]
         P3_3 --> P3_4[Git Commit & PR Handler]
     end
 
-    subgraph Phase 4: Frontend Web Dashboard
+    subgraph Phase4 ["Phase 4: Frontend Web Dashboard"]
         P4_1[Intake Form UI] --> P4_2[Live Agent Graph Renderer]
         P4_2 --> P4_3[Monaco Side-by-Side Diff Viewer]
         P4_3 --> P4_4[Live Terminal Log Stream]
     end
 
-    Phase 1 --> Phase 2
-    Phase 2 --> Phase 3
-    Phase 3 --> Phase 4
+    Phase1 --> Phase2
+    Phase2 --> Phase3
+    Phase3 --> Phase4
 ```
 
 ---
