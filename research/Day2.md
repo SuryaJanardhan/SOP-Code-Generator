@@ -1,4 +1,4 @@
-### Multi-Agents :
+# Multi-Agents :
 
 
 - SOP Agent → understands the bug, instructions, conditions, expected fix.
@@ -9,6 +9,8 @@
 - Validation Agent → runs tests/build/static checks.
 - Debug Agent → analyzes failures and feeds the information back into the fixing loop.
 - Supervisor → maintains state and decides what should happen next.
+
+
 
 
 
@@ -304,3 +306,25 @@ The Supervisor produces the final task outcome, which may include:
 - Validation results
 - Relevant explanation of the completed fix
 - Controlled failure information if the system is unable to resolve the issue
+
+---
+
+
+### Proposed Tech Stack
+
+- **Python** → Main backend language; runs agents and project logic.
+- **LangGraph** → Manages agent workflow, state, routing, and retry loops.
+- **LLM (OpenAI / Claude / Gemini)** → Provides reasoning and understanding to agents.
+- **PyMuPDF / python-docx** → Reads and extracts text from SOP documents.
+- **GitPython / Git CLI** → Clones and interacts with the target Git repository.
+- **ripgrep** → Quickly searches huge codebases for relevant code.
+- **Docker** → Safely runs the repository, builds, and tests in an isolated environment.
+- **pytest / Maven / npm** → Validates the modified code depending on the project's tech stack.
+- **FAISS / ChromaDB** → Performs semantic search to find code relevant to the SOP. [For Large Repositories]
+
+### Optional
+- **Tree-sitter / AST Tools** → Understands code structure, functions, classes, and dependencies.
+- **FastAPI** → Backend API connecting the frontend to the agent system.
+- **PostgreSQL** → Stores persistent task and project data if required.
+- **Redis** → Handles caching or background task/state management if required.
+- **Streamlit / React** → Provides the user interface for uploading the SOP and entering the Git URL.
