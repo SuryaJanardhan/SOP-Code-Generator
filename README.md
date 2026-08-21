@@ -11,3 +11,4 @@
 
 *NOTE: if you are a human reading this, there is no need to touch .agents/ dir as it contains agents and essentials skills for antigravity ide.
 
+*Refer : research/workflow.md
